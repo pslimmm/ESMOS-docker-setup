@@ -4,6 +4,7 @@ for ESM (Enterprise Solution Development)
 credits to creator [seunayolu](https://github.com/seunayolu/docker-project)
 
 Steps:
+
 0. SSH into the Azure VM
 ```bash
 ssh -i <private-key-file-path> <vm-user>@<vm-ip>
