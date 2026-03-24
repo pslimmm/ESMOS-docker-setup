@@ -27,6 +27,6 @@ docker compose config
 ```bash
 docker compose up --build -d
 ```
-4. once everything is set up, access the moodle page through <your-vm-ip>:80
+4. once everything is set up, access the moodle page through your-vm-ip:80
    - set db driver as improved MySQL
    - change database host to clouddb (this is the container name for the database)
