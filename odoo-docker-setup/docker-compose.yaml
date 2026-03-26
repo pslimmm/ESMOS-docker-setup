@@ -1,0 +1,53 @@
+services:
+  odoo-db:
+    image: postgres:15
+    container_name: odoo-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_DB_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    networks:
+      - odoo-internal
+
+  odoo:
+    image: odoo:17.0
+    container_name: odoo-app
+    restart: unless-stopped
+    depends_on:
+      - odoo-db
+    ports:
+      - "80:8069"
+    environment:
+      HOST: ${POSTGRES_HOST}
+      PORT: ${POSTGRES_PORT}
+      USER: ${POSTGRES_DB_USER}
+      PASSWORD: ${POSTGRES_DB_PASSWORD}
+    volumes:
+      - odoo-data:/var/lib/odoo
+      - odoo-addons:/mnt/extra-addons
+    networks:
+      - odoo-internal
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: odoo-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    ports:
+      - "6767:80"
+    networks:
+      - odoo-internal
+    depends_on:
+      - odoo-db
+volumes:
+  odoo-db-data:
+  odoo-data:
+  odoo-addons:
+
+networks:
+  odoo-internal:
+    driver: bridge
