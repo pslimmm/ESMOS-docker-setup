@@ -1,4 +1,5 @@
 ## Odoo Docker setup for Azure VM
+Setting up prebuilt odoo app on Azure VM using docker
 
 Steps:
 
