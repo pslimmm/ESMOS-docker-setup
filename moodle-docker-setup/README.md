@@ -47,7 +47,20 @@ docker compose config
 docker compose up --build -d
 ```
 
-7. once everything is set up, access the moodle page through your-vm-ip:80
+
+7. Set up SSL. The easiest way is to run Certbot on the host machine (the Azure VM).
+```bash   
+# Install Certbot:
+sudo apt update && sudo apt install certbot
+
+# Stop your Nginx container temporarily (to free up port 80 for validation):
+docker compose stop nginx-proxy
+
+# Run Certbot:
+sudo certbot certonly --standalone -d yourdomain.com
+```
+
+8. once everything is set up, access the moodle page through your-vm-ip:80
    - set db driver as improved MySQL
    - change database host to clouddb (this is the container name for the database)
    - set everything else as default

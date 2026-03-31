@@ -18,9 +18,11 @@ $CFG->dboptions = array (
   'dbcollation' => 'utf8mb4_0900_ai_ci',
 );
 
-$CFG->wwwroot   = 'http://esmos-moodle.eastasia.cloudapp.azure.com';
+$CFG->wwwroot   = 'https://esmos-moodle.eastasia.cloudapp.azure.com';
 $CFG->dataroot  = '/var/www/moodledata';
 $CFG->admin     = 'admin';
+$CFG->sslproxy = true;
+//$CFG->reverseproxy = true;
 
 $CFG->directorypermissions = 0777;
 
