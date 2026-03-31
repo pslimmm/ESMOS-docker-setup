@@ -11,6 +11,7 @@ services:
     volumes:
       - moodledata:/var/www/moodledata
       - ./moodle-php.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./config.php:/var/www/html/config.php:rw
     depends_on:
       - moodledb
     networks:
