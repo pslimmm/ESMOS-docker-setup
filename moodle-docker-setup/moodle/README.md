@@ -51,3 +51,7 @@ docker compose up --build -d
    - set db driver as improved MySQL
    - change database host to clouddb (this is the container name for the database)
    - set everything else as default
+
+
+
+
